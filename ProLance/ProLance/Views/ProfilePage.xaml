@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProLance.Views.ProfilePage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarHasShadow="False"
+             Shell.NavBarIsVisible="False"
+             >
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#fbfaff">
+                <!-- 1. Profile Picture-->
+                <Grid BackgroundColor="{StaticResource Primary}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="250"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" HeightRequest="350"
+                           Source="{Binding ImageUrl}"
+                           VerticalOptions="StartAndExpand" Aspect="AspectFill" Margin="0,-45,0,0" />
+                    <Frame  VerticalOptions="End" Padding="5"  HasShadow="True" Margin="10">
+
+                        <StackLayout Orientation="Horizontal" Opacity="0.5">
+                            <Label VerticalOptions="End" Padding="1" FontAttributes="Bold" FontSize="26" >
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="FirstName" />
+                                        <Binding Path="LastName" />
+                                    </MultiBinding>
+                                </Label.Text>
+
+                            </Label>
+                            <ImageButton Source="camera_icon" HeightRequest="25" 
+                                         WidthRequest="25" HorizontalOptions="EndAndExpand" 
+                                         VerticalOptions="EndAndExpand" 
+                                         Command="{Binding OnImagePicker}"
+                                         />
+                        </StackLayout>
+                    </Frame>
+                    
+                </Grid>
+
+                
+                <StackLayout>
+                    <StackLayout Margin="5" >
+                        <Frame>
+                            <StackLayout>
+                                <Entry Placeholder="First Name" Text="{Binding FirstName}" Margin="6" />
+                                <Entry Placeholder="Last Name" Text="{Binding LastName}"  Margin="6" />
+                                
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+
+                   
+                    <StackLayout Margin="5" >
+                        <Frame>
+                            <StackLayout>
+                                <Entry Placeholder="Address" Text="{Binding Address}" Margin="6" />
+                                <Entry Placeholder="Phone Number" Text="{Binding Phone}" Margin="6"  />
+                                <Entry Placeholder="Email" Text="{Binding Email}"  Margin="6" />
+                                <Button Margin="6" Text="UPDATE" CornerRadius="6" Command="{Binding OnUpdateCommand}"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+
+            </StackLayout>
+            
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

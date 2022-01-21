@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProLance.Views.Provider.HomeProviderPage"
+             Shell.NavBarHasShadow="False"
+             Shell.NavBarIsVisible="False"
+             
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#265457"
+                          Offset="0.1" />
+                    <GradientStop Color="#265457"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="SERVICES" FontAttributes="Bold" Margin="5" TextColor="WhiteSmoke" FontSize="20" HorizontalOptions="Start"/>
+                </StackLayout>
+                <CarouselView EmptyView="No Data" 
+                          HeightRequest="250" 
+                          x:Name="ServiceCategory" 
+                          Loop="False"
+                          PeekAreaInsets="130"
+                          ItemsUpdatingScrollMode="KeepLastItemInView"
+                          BindingContext="{Binding ServiceCategories}"
+                              
+                          >
+                    <CarouselView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="10" 
+                                           Orientation="Horizontal"
+                                           SnapPointsAlignment="Center"
+                                           
+                                           />
+                    </CarouselView.ItemsLayout>
+                </CarouselView>
+            </StackLayout>
+            <StackLayout Grid.Row="1">
+                <Label Text="SERVICES YOU OFFER" FontAttributes="Bold" Margin="5" TextColor="WhiteSmoke" FontSize="20"/>
+                <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
+                    <Image HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Source="location_map_icon" VerticalOptions="Center"/>
+                    <Label VerticalOptions="Center" FontAttributes="Bold" Margin="5" TextColor="WhiteSmoke" FontSize="16" HorizontalOptions="End" x:Name="TxtLocation"/>
+                </StackLayout>
+                <CollectionView EmptyView="No Items" 
+                                x:Name="SelectedServices" 
+                                BackgroundColor="Transparent"
+                                SelectionMode="Single" 
+                                SelectionChanged="ServicesCollection_SelectionChanged"
+                                >
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame Margin="5" CornerRadius="5" Padding="0" HasShadow="True">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions >
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <StackLayout BackgroundColor="CadetBlue">
+                                            <Image Source="user" WidthRequest="50" HeightRequest="50" Aspect="Fill" />
+                                        </StackLayout>
+                                        <Label 
+                                            Grid.Column="1" 
+                                            Text="{Binding Name}" 
+                                            HorizontalOptions="Center" 
+                                            VerticalOptions="Center"
+                                            FontSize="20"
+                                            />
+                                        <ImageButton Grid.Column="2" 
+                                             HorizontalOptions="End"  
+                                             Source="delete_icon" 
+                                             WidthRequest="50"
+                                             HeightRequest="50" 
+                                             Padding="0"
+                                             Margin="5"
+                                             x:Name="ImgRemoveOffer" 
+                                             CommandParameter="{Binding Id}"
+                                             Clicked="ImgRemoveOffer_Clicked"
+                                             Aspect="AspectFill"
+                                        />
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

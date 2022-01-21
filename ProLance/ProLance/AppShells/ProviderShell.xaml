@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProLance.AppShells.ProviderShell"
+            xmlns:local_="clr-namespace:ProLance.Views.Provider"
+            xmlns:local="clr-namespace:ProLance.Views"
+       >
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+    <TabBar>
+        <ShellContent Title="HOME" Icon="dashboard_icon.png" Route="HomePage" ContentTemplate="{DataTemplate local_:HomeProviderPage}" />
+        <ShellContent Title="REQUESTS" Icon="request_icon.png" ContentTemplate="{DataTemplate local_:ServiceRequestPage}" />
+        <ShellContent Title="HISTORY" Icon="icon_feed.png" ContentTemplate="{DataTemplate local_:HistoryProviderPage}" />
+        <ShellContent Title="PROFILE" Icon="user_account_profile_icon.png" ContentTemplate="{DataTemplate local:ProfilePage}" />
+    </TabBar>
+</Shell>

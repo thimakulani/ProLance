@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProLance.Views.Client.HomeClientPage"
+             NavigationPage.HasNavigationBar="False"
+             Shell.NavBarHasShadow="False"
+             Shell.NavBarIsVisible="False"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#265457"
+                          Offset="0.1" />
+                    <GradientStop Color="#265457"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label Text="CHOSE A SERVICE" FontAttributes="Bold" Margin="5" TextColor="WhiteSmoke" FontSize="20" HorizontalOptions="Start" />
+            <StackLayout>
+                <CarouselView EmptyView="No Data" 
+                          HeightRequest="250" 
+                          x:Name="ClientServiceCategory" 
+                          Loop="False"
+                          PeekAreaInsets="130"
+                          ItemsUpdatingScrollMode="KeepLastItemInView"
+                          BindingContext="{Binding ServiceCategories}"
+                          >
+                    <CarouselView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="10" 
+                                           Orientation="Horizontal"
+                                           SnapPointsAlignment="Center"
+                                           
+                                           />
+                    </CarouselView.ItemsLayout>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame HeightRequest="250" WidthRequest="200" 
+                                    Padding="0"
+                                    HasShadow="True" Margin="3" CornerRadius="7"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Frame.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="CadetBlue" Offset="0.1"/>
+                                            <GradientStop Color="CadetBlue" Offset="1.0"/>
+
+                                        </LinearGradientBrush>
+                                    </Frame.Background>
+                                    <Grid>
+                                        <Grid>
+                                            <StackLayout>
+                                                <ImageButton 
+                                                HeightRequest="150" 
+                                                Opacity="0.6"
+                                                x:Name="ImgService"
+                                                CommandParameter="{Binding Id}"
+                                                Clicked="ImgService_Clicked"
+                                                BackgroundColor="Transparent"
+                                                Source="{Binding ImgUrl}"
+                                                Aspect="AspectFill"/>
+                                            </StackLayout>
+                                            <Label Text="{Binding Name}" 
+                                                FontSize="12"
+                                                TextColor="White"
+                                                FontAttributes="Bold" Margin="15,5"
+                                                VerticalOptions="EndAndExpand"/>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </StackLayout>
+            
+            <Label Text="SERVICE REQUESTED" FontAttributes="Bold" Margin="5" TextColor="WhiteSmoke" FontSize="20" HorizontalOptions="Start" />
+
+            <CollectionView EmptyView="No Service Requested Yet" 
+                                x:Name="ServiceRequested" 
+                                BackgroundColor="Transparent"
+                                SelectionMode="Single" 
+                                >
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame Margin="5" CornerRadius="5" Padding="0" HasShadow="True">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Vertical" Grid.Column="0" Margin="5">
+                                        <Label Text="txt"/>
+                                        <Label Text="txt"/>
+                                        <Label Text="txt"/>
+                                        <Label Text="txt"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical" Grid.Column="1"  Margin="5">
+                                        <Label Text="txt"/>
+                                        <Label Text="txt"/>
+                                        <Label Text="txt"/>
+                                        <Label Text="txt"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

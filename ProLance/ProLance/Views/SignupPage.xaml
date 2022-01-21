@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProLance.Views.SignupPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Frame Margin="10" CornerRadius="5" VerticalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Image Source="user" WidthRequest="75" HeightRequest="75"/>
+                    <Entry Placeholder="First Name" Margin="10,5" x:Name="InputFirstName"/>
+                    <Entry Placeholder="Last Name"  Margin="10,5" x:Name="InputLastName"/>
+                    
+                    <Entry Placeholder="Address"  Margin="10,5" x:Name="InputAddress"/>
+                    <Frame Margin="5 ">
+                        <StackLayout>
+                            <RadioButton Content="Client" Value="S" x:Name="Radio_C"/>
+                            <RadioButton Content="Service Provider" Value="Radio_SP"/>
+                        </StackLayout>
+                    </Frame>
+                    <Entry Placeholder="Phone Number"  Margin="10,5" x:Name="InputPhone" />
+                    <Entry Placeholder="Email"  Margin="10,5" x:Name="InputEmail"/>
+                    <Entry Placeholder="Password"  Margin="10,5" x:Name="InputPassword"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Login"  Margin="10,5" HeightRequest="35" CornerRadius="5" BackgroundColor="#b83542"/>
+                        <Button Text="Submit"  Margin="10,5" CornerRadius="5" HeightRequest="35"  Grid.Column="1" x:Name="BtnSignup" Clicked="BtnSignup_Clicked"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

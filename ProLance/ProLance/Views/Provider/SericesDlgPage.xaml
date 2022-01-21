@@ -1,0 +1,62 @@
+﻿<pages:PopupPage  
+    xmlns:pages="http://rotorgames.com" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProLance.Views.Provider.SericesDlgPage">
+    <pages:PopupPage.Animation>
+        <pages:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" 
+        />
+    </pages:PopupPage.Animation>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Margin="20">
+            <ImageButton 
+                WidthRequest="40" 
+                HeightRequest="40" 
+                CornerRadius="80" 
+                x:Name="ImgClose"
+                Source="delete_icon"
+                Clicked="ImgClose_Clicked"
+                HorizontalOptions="End"
+            />
+            <Frame>
+                <StackLayout>
+                    <CollectionView
+                        x:Name="ItemServices"
+                        EmptyView="NO SERVICES ADDED UNDER THIS CATEGORY" 
+                        SelectionMode="Single">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="2" Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame Margin="5" Padding="3">
+                                        <StackLayout>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Text="{Binding Name}" VerticalOptions="Center"/>
+                                                <CheckBox Grid.Column="1" x:Name="ItemCheck" CheckedChanged="ItemCheck_CheckedChanged" IsChecked="False"/>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</pages:PopupPage>

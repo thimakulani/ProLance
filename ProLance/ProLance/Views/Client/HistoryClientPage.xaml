@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProLance.Views.Client.HistoryClientPage"
+             Shell.NavBarIsVisible="False"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <StackLayout.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#265457"
+                          Offset="0.1" />
+                        <GradientStop Color="#265457"
+                          Offset="1.0" />
+                    </LinearGradientBrush>
+                </StackLayout.Background>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackLayout>
+                        <Label Margin="25, 5, 0, 25" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="SERVICES REQUESTED HISTORY" FontSize="20" FontAttributes="Bold" ForegroundColor="White"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                    <Frame Margin="10, 0, 10, 10" Grid.Row="3" CornerRadius="6" Padding="3">
+                            <CollectionView 
+                                x:Name="ItemRequests"
+                                SelectionMode="None" EmptyView="No items to display">
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout>
+                                            <Frame Margin="3" CornerRadius="5">
+                                                <StackLayout>
+                                                <Label Text="{Binding Name}" />
+                                                <Label Text="{Binding Dates}" />
+                                                <Label Text="{Binding Status}" />
+                                            </StackLayout>
+                                            </Frame>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
