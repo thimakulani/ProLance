@@ -16,7 +16,7 @@ namespace ProLance.Views.Provider
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ServiceRequestPage : ContentPage
     {
-        private ObservableCollection<Requests> requests = new ObservableCollection<Requests>();
+        private readonly ObservableCollection<Requests> requests = new ObservableCollection<Requests>();
         public ObservableCollection<Requests> Requests { get { return requests; } }
         public ServiceRequestPage()
         {

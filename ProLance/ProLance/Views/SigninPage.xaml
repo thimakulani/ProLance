@@ -1,32 +1,87 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              x:Class="ProLance.Views.SigninPage">
     <ContentPage.Content>
        
         <StackLayout>
-           
 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="Auto"/>
+                    <RowDefinition  Height="*"/>
+                    
+                </Grid.RowDefinitions>
 
-
-            <Frame Margin="10" CornerRadius="5" VerticalOptions="CenterAndExpand">
-                <StackLayout>
-                    <Image Source="user" WidthRequest="75" HeightRequest="75"/>
-                    <Entry Placeholder="Email" Margin="10" Text="{Binding Email}"/>
-                    <Entry Placeholder="Password"  Margin="10" Text="{Binding Password}"/>
-                    <Label Text="Forgot Password?" Margin="10" TextColor="Blue"/>
+                <StackLayout BackgroundColor="{StaticResource Primary}">
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Button Text="Login"  Margin="10" CornerRadius="5"  Command="{Binding OnSubmitCommand}" />
-                        <Button Text="Signup"  Margin="10" CornerRadius="5" 
-                                Grid.Column="1" Clicked="BtnSignup_Clicked" 
-                                BackgroundColor="#b83542"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="Auto"/>
+                            <RowDefinition  Height="*"/>
+                        </Grid.RowDefinitions>
+                        <forms:AnimationView 
+                            Grid.Row="0"
+                            AnimationSource="AssetOrBundle"
+                            Animation="hello.json"
+                            AutoPlay="True"
+                            RepeatCount="4"
+                            RepeatMode="Restart"
+                            Scale="1"
+                            Speed="1"
+                            MaxFrame="100"
+                            MaxProgress="100"
+                            MinFrame="0"
+                            MinProgress="0"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="150"
+                            />
+                        <Label Text="LOGIN" TextColor="Wheat" Grid.Row="1" Margin="20" FontSize="26" FontAttributes="Bold"/>
                     </Grid>
                 </StackLayout>
-            </Frame>
+                <Frame Margin="10" Grid.Row="1" CornerRadius="5" VerticalOptions="CenterAndExpand">
+                    <StackLayout>
+                        
+                        <input:AdvancedEntry 
+                            Placeholder="Email"
+                            CornerRadius="10"
+                            Margin="5"
+                            TextColor="{StaticResource Primary}"
+                            Text="{Binding Email}"
+                            IsRequired="True"
+                            Keyboard="Email"
+                        
+                        />
+                        <input:AdvancedEntry 
+                            Placeholder="Password"
+                            CornerRadius="10"
+                            Margin="5"
+                            BorderColor="{StaticResource Primary}"
+                            IsRequired="True"
+                            IsPassword="True"
+                            TextColor="{StaticResource Primary}"
+                            Text="{Binding Password}"
+                            
+                        />
+                        <Label Text="Forgot Password?" Margin="10" TextColor="Blue"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Text="Login"  Margin="5" HeightRequest="35" CornerRadius="5"  Command="{Binding OnSubmitCommand}" />
+                            <Button Text="Signup"  
+                                Margin="5" 
+                                    HeightRequest="35"
+                                CornerRadius="5" 
+                                Grid.Column="1" Clicked="BtnSignup_Clicked" 
+                                BackgroundColor="#b83542"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+            
 
 
 

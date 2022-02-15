@@ -12,14 +12,19 @@
                 <LinearGradientBrush>
                     <GradientStop Color="#265457"
                           Offset="0.1" />
-                    <GradientStop Color="#265457"
+                    <GradientStop Color="CadetBlue"
                           Offset="1.0" />
                 </LinearGradientBrush>
             </StackLayout.Background>
-            <Label Text="CHOSE A SERVICE" FontAttributes="Bold" Margin="5" TextColor="WhiteSmoke" FontSize="20" HorizontalOptions="Start" />
+            <StackLayout Padding="17, 17, 0, 0">
+                <Label Text="CHOSE A SERVICE" 
+                   FontAttributes="Bold"
+                   TextColor="WhiteSmoke" 
+                   FontSize="20" HorizontalOptions="Start" />
+            </StackLayout>
             <StackLayout>
                 <CarouselView EmptyView="No Data" 
-                          HeightRequest="250" 
+                          HeightRequest="300" 
                           x:Name="ClientServiceCategory" 
                           Loop="False"
                           PeekAreaInsets="130"
@@ -36,7 +41,7 @@
                     <CarouselView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
-                                <Frame HeightRequest="250" WidthRequest="200" 
+                                <Frame HeightRequest="300" WidthRequest="250" 
                                     Padding="0"
                                     HasShadow="True" Margin="3" CornerRadius="7"
                                     HorizontalOptions="CenterAndExpand">
@@ -51,7 +56,7 @@
                                         <Grid>
                                             <StackLayout>
                                                 <ImageButton 
-                                                HeightRequest="150" 
+                                                HeightRequest="300" 
                                                 Opacity="0.6"
                                                 x:Name="ImgService"
                                                 CommandParameter="{Binding Id}"
@@ -65,6 +70,7 @@
                                                 TextColor="White"
                                                 FontAttributes="Bold" Margin="15,5"
                                                 VerticalOptions="EndAndExpand"/>
+                                            
                                         </Grid>
                                     </Grid>
                                 </Frame>

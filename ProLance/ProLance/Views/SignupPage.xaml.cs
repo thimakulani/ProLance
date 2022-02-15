@@ -16,8 +16,8 @@ namespace ProLance.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignupPage : ContentPage
     {
-        IAuth auth;
-        IFirestore database;
+        private readonly IAuth auth;
+        private readonly IFirestore database;
         public SignupPage()
         {
             InitializeComponent();

@@ -4,67 +4,59 @@ using Plugin.CloudFirestore;
 using Plugin.FirebaseAuth;
 using Xamarin.Forms;
 using ProLance.AppShells;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace ProLance
 {
     public partial class App : Application
     {
-        string current_role = null;
         public App()
         {
             InitializeComponent();
-
-            // DependencyService.Register<MockDataStore>();
             var auth = CrossFirebaseAuth.Current.Instance;
-            if (auth.CurrentUser != null)
+            auth.AuthState += Auth_AuthState;
+
+            AppCenter.Start("android=ebbe9599-80cd-4dd1-b1ae-a6d1911d4f14;",
+                  typeof(Analytics), typeof(Crashes));
+        }
+        private async void Auth_AuthState(object sender, AuthStateEventArgs e)
+        {
+            if (e.Auth.CurrentUser != null)
             {
-                CrossCloudFirestore
+                var query = await CrossCloudFirestore
                         .Current
                         .Instance
                         .Collection("USERS")
-                        .Document(auth.CurrentUser.Uid)
-                        .AddSnapshotListener((values, error) =>
-                        {
-                            if (values.Exists)
-                            {
-                                var user = values.ToObject<User>();
-
-                                if (user.Role == "S" && current_role != user.Role)
-                                {
-                                    MainPage = new ProviderShell();
-                                    current_role = user.Role;
-                                }
-                                if(user.Role == "C" && current_role != user.Role)
-                                {
-                                    MainPage = new ClientShell();
-                                    current_role = user.Role;
-                                }
-                                current_role = user.Role;
-                            }
-                            else
-                            {
-                                MainPage = new SigninPage();
-                                auth.SignOut();
-                            }
-                        });
-                
+                        .Document(e.Auth.CurrentUser.Uid)
+                        .GetAsync();
+                var user = query.ToObject<User>();
+                if (user.Role == "C")
+                {
+                    MainPage = new ClientShell();
+                }
+                else if(user.Role == "S")
+                {
+                    MainPage = new ProviderShell();
+                }
+                else
+                {
+                    MainPage = new SigninPage();
+                    e.Auth.SignOut();
+                }
             }
             else
             {
                 MainPage = new SigninPage();
             }
         }
-
-       
-
         protected override void OnStart()
         {
         }
-
         protected override void OnSleep()
         {
         }
-
         protected override void OnResume()
         {
         }

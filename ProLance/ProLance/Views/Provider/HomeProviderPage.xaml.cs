@@ -19,11 +19,11 @@ namespace ProLance.Views.Provider
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class HomeProviderPage : ContentPage
 	{
-		private ObservableCollection<Services> service = new ObservableCollection<Services>();
+		private readonly ObservableCollection<Services> service = new ObservableCollection<Services>();
 		public ObservableCollection<Services> Services { get { return service; } }	
 
 
-		private ObservableCollection<ServiceCategories> serviceCategories = new ObservableCollection<ServiceCategories>();
+		private readonly ObservableCollection<ServiceCategories> serviceCategories = new ObservableCollection<ServiceCategories>();
 		public ObservableCollection<ServiceCategories> ServiceCategories { get { return serviceCategories; } }
 		public HomeProviderPage ()
 		{
@@ -139,12 +139,14 @@ namespace ProLance.Views.Provider
 		int i = 0;
 		private void BtnAddService_Clicked(object sender, EventArgs e)
         {
-			
-			Dictionary<string, object> data = new Dictionary<string, object>();
-			data.Add("Category", "IT SERVICE");
-			data.Add("Name", $"IT - {i++}");
-			data.Add("Uid", CrossFirebaseAuth.Current.Instance.CurrentUser.Uid);
-			CrossCloudFirestore
+
+            Dictionary<string, object> data = new Dictionary<string, object>
+            {
+                { "Category", "IT SERVICE" },
+                { "Name", $"IT - {i++}" },
+                { "Uid", CrossFirebaseAuth.Current.Instance.CurrentUser.Uid }
+            };
+            CrossCloudFirestore
 				.Current
 				.Instance
 				.Collection("OFFERS")

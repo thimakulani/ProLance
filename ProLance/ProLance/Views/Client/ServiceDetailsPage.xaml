@@ -6,6 +6,7 @@
              
              >
     <ContentPage.Content>
+        
         <StackLayout>
             <StackLayout>
                 <Label FontAttributes="Bold" Margin="5" 
@@ -13,8 +14,9 @@
                        x:Name="TxtHeading"
                        />
                 <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
-                    <Image HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Source="location_map_icon" VerticalOptions="Center"/>
-                    <Label VerticalOptions="Center" FontAttributes="Bold" Margin="5" TextColor="WhiteSmoke" FontSize="16" HorizontalOptions="End" x:Name="TxtLocation"/>
+                    <Image HeightRequest="25" WidthRequest="25" HorizontalOptions="End" 
+                           Source="location_map_icon" VerticalOptions="Center"/>
+                    
                 </StackLayout>
                 <CollectionView EmptyView="No Items" 
                                 x:Name="CategoryServices" 

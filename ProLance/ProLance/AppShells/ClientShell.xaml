@@ -27,6 +27,5 @@
         <ShellContent Title="HOME" Icon="icon_about.png" Route="HomeClientPage" ContentTemplate="{DataTemplate local_:HomeClientPage}" />
         <ShellContent Title="HISTORY" Icon="icon_feed.png" ContentTemplate="{DataTemplate local_:HistoryClientPage}" />
         <ShellContent Title="PROFILE" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ProfilePage}" />
-
     </TabBar>
 </Shell>

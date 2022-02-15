@@ -9,7 +9,9 @@ namespace ProLance.Models
     {
         [Id]
         public string Id { get; set; }
+        [MapTo("name")]
         public string Name { get; set; }
+        [MapTo("description")]
         public string Description { get; set; }
         public string ImgUrl { get; set; }
     }

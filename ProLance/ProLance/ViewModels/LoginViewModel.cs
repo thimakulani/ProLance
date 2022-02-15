@@ -28,7 +28,7 @@ namespace ProLance.ViewModels
                 .Instance;
             OnSubmitCommand = new Command(LoginClick);
         }
-        IAuth auth;
+        private readonly IAuth auth;
         public async void LoginClick()
         {
             if(Email == null)

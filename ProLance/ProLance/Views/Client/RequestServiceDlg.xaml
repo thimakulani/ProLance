@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage  xmlns:pages="http://rotorgames.com" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProLance.Views.Client.RequestServiceDlg">
+             x:Class="ProLance.Views.Client.RequestServiceDlg"
+             
+                  >
     <pages:PopupPage.Animation>
         <pages:ScaleAnimation
             DurationIn="400"
@@ -19,9 +21,9 @@
         <StackLayout VerticalOptions="Center" Margin="20">
             <Frame>
                 <StackLayout>
-                    <Entry Placeholder="Address" />
-                    <Entry Placeholder="Description"/>
-                    <DatePicker x:Name="PickerDate" />
+                    <Entry Placeholder="Address" Keyboard="Text" Text="{Binding Address}"/>
+                    <Entry Placeholder="Description" Keyboard="Plain" Text="{Binding Address}"/>
+                    <DatePicker x:Name="PickerDate" DateSelected="PickerDate_DateSelected"/>
 
                     <Button HeightRequest="35" Text="Request" CornerRadius="6"  x:Name="BtnSubmit" Clicked="BtnSubmit_Clicked"/>
 

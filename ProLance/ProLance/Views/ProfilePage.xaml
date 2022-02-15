@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              x:Class="ProLance.Views.ProfilePage"
              NavigationPage.HasNavigationBar="False"
              Shell.NavBarHasShadow="False"
@@ -8,7 +8,7 @@
              >
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout BackgroundColor="#fbfaff">
+            <StackLayout>
                 <!-- 1. Profile Picture-->
                 <Grid BackgroundColor="{StaticResource Primary}">
                     <Grid.RowDefinitions>
@@ -38,32 +38,81 @@
                     </Frame>
                     
                 </Grid>
-
                 
-                <StackLayout>
-                    <StackLayout Margin="5" >
-                        <Frame>
+                <input:FormView >
+                    <StackLayout Margin="10" >
+                    <StackLayout>
+                        <Frame Padding="3">
                             <StackLayout>
-                                <Entry Placeholder="First Name" Text="{Binding FirstName}" Margin="6" />
-                                <Entry Placeholder="Last Name" Text="{Binding LastName}"  Margin="6" />
-                                
+                                <input:AdvancedEntry 
+                                    Placeholder="FirstName"
+                                    CornerRadius="5"
+                                    Margin="5"
+                                    TextColor="{StaticResource Primary}"
+                                    Text="{Binding FirstName}"
+                                    IsRequired="True"
+                                    Keyboard="Text"
+                        
+                                />
+                                <input:AdvancedEntry 
+                                    Placeholder="LastName"
+                                    CornerRadius="5"
+                                    Margin="5"
+                                    TextColor="{StaticResource Primary}"
+                                    Text="{Binding LastName}"
+                                    IsRequired="True"
+                                    Keyboard="Text"
+                        
+                                />
                             </StackLayout>
                         </Frame>
                     </StackLayout>
 
                    
-                    <StackLayout Margin="5" >
-                        <Frame>
+                    <StackLayout>
+                        <Frame Padding="5" CornerRadius="5">
                             <StackLayout>
-                                <Entry Placeholder="Address" Text="{Binding Address}" Margin="6" />
-                                <Entry Placeholder="Phone Number" Text="{Binding Phone}" Margin="6"  />
-                                <Entry Placeholder="Email" Text="{Binding Email}"  Margin="6" />
-                                <Button Margin="6" Text="UPDATE" CornerRadius="6" Command="{Binding OnUpdateCommand}"/>
+                              
+                                <input:AdvancedEntry 
+                                    Placeholder="Address"
+                                    CornerRadius="5"
+                                    Margin="5"
+                                    TextColor="{StaticResource Primary}"
+                                    Text="{Binding Address}"
+                                    IsRequired="True"
+                                    Keyboard="Text"
+                                    BorderColor="{StaticResource Primary}" 
+                                    
+                        
+                                />
+                                
+                                <input:AdvancedEntry 
+                                    Placeholder="Phone Number"
+                                    CornerRadius="5"
+                                    Margin="5"
+                                    TextColor="{StaticResource Primary}"
+                                    Text="{Binding Phone}"
+                                    IsRequired="True"
+                                    Keyboard="Numeric"
+                        
+                                />
+                     
+                                <input:AdvancedEntry 
+                                    Placeholder="Email"
+                                    CornerRadius="5"
+                                    Margin="5"
+                                    TextColor="{StaticResource Primary}"
+                                    Text="{Binding Email}"
+                                    IsRequired="True"
+                                    Keyboard="Email"
+                        
+                                />  
+                                <Button Margin="6" Text="UPDATE" HeightRequest="35" CornerRadius="6" Command="{Binding OnUpdateCommand}"/>
                             </StackLayout>
                         </Frame>
                     </StackLayout>
                 </StackLayout>
-
+                </input:FormView>
             </StackLayout>
             
         </ScrollView>

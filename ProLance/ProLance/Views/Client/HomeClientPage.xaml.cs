@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.FirebaseAuth;
 
 namespace ProLance.Views.Client
 {
@@ -18,11 +19,57 @@ namespace ProLance.Views.Client
         public HomeClientPage()
         {
             InitializeComponent();
-            GetServices();
+            GetServicesCategories();
+			GetRequestedServices();
         }
-		private ObservableCollection<ServiceCategories> serviceCategories = new ObservableCollection<ServiceCategories>();
+        private readonly ObservableCollection<Requests> requests = new ObservableCollection<Requests>();
+        public ObservableCollection<Requests> Requests { get { return requests; } }
+        private void GetRequestedServices()
+        {
+            CrossCloudFirestore
+                   .Current
+                   .Instance
+                   .Collection("REQUESTS")
+                   .WhereEqualsTo("Uid", CrossFirebaseAuth.Current.Instance.CurrentUser.Uid)
+                   //.WhereEqualsTo("Status", "1")
+                   .AddSnapshotListener(async (data, error) =>
+                   {
+                       if (!data.IsEmpty)
+                       {
+                           foreach (var item in data.DocumentChanges)
+                           {
+                               var _request = new Requests();
+                               switch (item.Type)
+                               {
+                                   case DocumentChangeType.Added:
+                                       _request = item.Document.ToObject<Requests>();
+                                       _request.Name = await GetServiceNameAsync(_request.SiD);
+                                       requests.Add(_request);
+                                       break;
+                                   case DocumentChangeType.Modified:
+                                       break;
+                                   case DocumentChangeType.Removed:
+                                       //requests.RemoveAt(item.OldIndex);
+                                       break;
+                               }
+                           }
+                       }
+                   });
+        }
+        private async Task<string> GetServiceNameAsync(string id)
+        {
+            var query = await CrossCloudFirestore
+                .Current
+                .Instance
+                .Collection("SERVICES")
+                .Document(id)
+                .GetAsync();
+            return query.ToObject<Services>().Name;
+
+        }
+        private readonly ObservableCollection<ServiceCategories> serviceCategories = new ObservableCollection<ServiceCategories>();
 		public ObservableCollection<ServiceCategories> ServiceCategories { get { return serviceCategories; } }
-		private void GetServices()
+		private void GetServicesCategories()
         {
 			ClientServiceCategory.BindingContext = this;
 			ClientServiceCategory.ItemsSource = ServiceCategories;
@@ -57,7 +104,8 @@ namespace ProLance.Views.Client
         {
 			var img = (ImageButton)sender;
 			var id  = img.CommandParameter.ToString();
-			Navigation.PushModalAsync(new ServiceDetailsPage(id));
+			Navigation.PushAsync(new ServiceDetailsPage(id));
+			Console.WriteLine(id);
         }
 
        

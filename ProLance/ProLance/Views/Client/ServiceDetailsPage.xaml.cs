@@ -31,7 +31,7 @@ namespace ProLance.Views.Client
                 {
                     if (v.Exists)
                     {
-                        TxtHeading.Text = $"SERVICE SELECTED: {v.ToObject<Services>().Name}";
+                        TxtHeading.Text = $"SERVICE CATEGORY SELECTED: {v.ToObject<ServiceCategories>().Name}";
                     }
                 });
             LoadSearvices(id);
@@ -71,6 +71,7 @@ namespace ProLance.Views.Client
         {
             var item = e.CurrentSelection.FirstOrDefault() as Services;
             PopupNavigation.Instance.PushAsync(new RequestServiceDlg(item.Id));
+            
         }
     }
 }
