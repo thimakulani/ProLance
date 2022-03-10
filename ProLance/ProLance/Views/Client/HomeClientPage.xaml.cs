@@ -104,7 +104,7 @@ namespace ProLance.Views.Client
         {
 			var img = (ImageButton)sender;
 			var id  = img.CommandParameter.ToString();
-			Navigation.PushAsync(new ServiceDetailsPage(id));
+			Navigation.PushModalAsync(new ServiceDetailsPage(id));
 			Console.WriteLine(id);
         }
 
