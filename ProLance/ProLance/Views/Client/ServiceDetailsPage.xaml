@@ -3,20 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProLance.Views.Client.ServiceDetailsPage"
              BackgroundColor="{StaticResource Primary}"
-             
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
              >
     <ContentPage.Content>
         
         <StackLayout>
+            <ImageButton Source="arrow_back_left_navigation" HorizontalOptions="Start" HeightRequest="35" WidthRequest="35" BackgroundColor="Transparent" />
             <StackLayout>
                 <Label FontAttributes="Bold" Margin="5" 
                        TextColor="WhiteSmoke" FontSize="20"
                        x:Name="TxtHeading"
                        />
-                <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
-                    <Image HeightRequest="25" WidthRequest="25" HorizontalOptions="End" 
+                <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" Visual="Material">
+                    <Image HeightRequest="25" WidthRequest="25" HorizontalOptions="End"  IsVisible="false"
                            Source="location_map_icon" VerticalOptions="Center"/>
-                    
                 </StackLayout>
                 <CollectionView EmptyView="No Items" 
                                 x:Name="CategoryServices" 

@@ -17,6 +17,7 @@ namespace ProLance.Views.Client
     {
         private readonly string id;
         public string Address { get; set; }
+        public string Description { get; set; }
         public RequestServiceDlg(string id)
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace ProLance.Views.Client
                 {"Uid",CrossFirebaseAuth.Current.Instance.CurrentUser.Uid },
                 {"Dates",PickerDate.Date.ToString("dd/MMM/yyyy") },
                 {"Status", "0"},
+                {"Description", Description},
                 {"Address", Address },
             };
             

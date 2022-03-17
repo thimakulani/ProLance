@@ -22,7 +22,7 @@
             <Frame>
                 <StackLayout>
                     <Entry Placeholder="Address" Keyboard="Text" Text="{Binding Address}"/>
-                    <Entry Placeholder="Description" Keyboard="Plain" Text="{Binding Address}"/>
+                    <Entry Placeholder="Description" Keyboard="Plain" Text="{Binding Description}"/>
                     <DatePicker x:Name="PickerDate" DateSelected="PickerDate_DateSelected"/>
 
                     <Button HeightRequest="35" Text="Request" CornerRadius="6"  x:Name="BtnSubmit" Clicked="BtnSubmit_Clicked"/>
