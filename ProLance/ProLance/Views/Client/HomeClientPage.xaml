@@ -70,7 +70,7 @@
                                                 TextColor="White"
                                                 FontAttributes="Bold" Margin="15,5"
                                                 VerticalOptions="EndAndExpand"/>
-                                            
+
                                         </Grid>
                                     </Grid>
                                 </Frame>
@@ -79,7 +79,7 @@
                     </CarouselView.ItemTemplate>
                 </CarouselView>
             </StackLayout>
-            
+
             <Label Text="SERVICE REQUESTED" FontAttributes="Bold" Margin="5" TextColor="WhiteSmoke" FontSize="20" HorizontalOptions="Start" />
 
             <CollectionView EmptyView="No Service Requested Yet" 

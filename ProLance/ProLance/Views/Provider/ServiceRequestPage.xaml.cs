@@ -25,7 +25,7 @@ namespace ProLance.Views.Provider
             InitializeComponent();
 
 
-       
+
 
             RequestsItems.BindingContext = this;
             RequestsItems.ItemsSource = Requests;
@@ -41,9 +41,9 @@ namespace ProLance.Views.Provider
                 .WhereEqualsTo("Uid", CrossFirebaseAuth.Current.Instance.CurrentUser.Uid)
                 .GetAsync();
 
-            if(!query.IsEmpty)
+            if (!query.IsEmpty)
             {
-                List<Offers> offers = (List<Offers>)query.ToObjects<Offers>();
+                List<Offers> offers = query.ToObjects<Offers>().ToList<Offers>();
 
                 var arr = offers.Select(x => x.Id).ToArray();
 
@@ -77,7 +77,7 @@ namespace ProLance.Views.Provider
                         }
                     });
             }
-            
+
         }
     }
 }

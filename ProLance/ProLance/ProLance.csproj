@@ -11,18 +11,18 @@
 
   <ItemGroup>
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.1.0" />
-    <PackageReference Include="Microsoft.AppCenter" Version="4.5.0" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.5.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.5.0" />
+    <PackageReference Include="Microsoft.AppCenter" Version="4.5.1" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.5.1" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.5.1" />
     <PackageReference Include="Plugin.CloudFirestore" Version="4.1.0" />
     <PackageReference Include="Plugin.FirebaseAuth" Version="4.1.0" />
     <PackageReference Include="Plugin.FirebaseStorage" Version="4.1.0" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.0" />
-    <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="2.0.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />  
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
+    <PackageReference Include="Xamarin.CommunityToolkit.Markup" Version="2.0.2" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />  
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.3.0" />  
     <PackageReference Include="Xamarin.Forms.InputKit" Version="3.7.2" />  
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />

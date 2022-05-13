@@ -37,15 +37,15 @@
                                          />
                         </StackLayout>
                     </Frame>
-                    
+
                 </Grid>
-                
+
                 <input:FormView >
                     <StackLayout Margin="10" >
-                    <StackLayout>
-                        <Frame Padding="3">
-                            <StackLayout>
-                                <input:AdvancedEntry 
+                        <StackLayout>
+                            <Frame Padding="3">
+                                <StackLayout>
+                                    <input:AdvancedEntry 
                                     Placeholder="FirstName"
                                     CornerRadius="5"
                                     Margin="5"
@@ -55,7 +55,7 @@
                                     Keyboard="Text"
                         
                                 />
-                                <input:AdvancedEntry 
+                                    <input:AdvancedEntry 
                                     Placeholder="LastName"
                                     CornerRadius="5"
                                     Margin="5"
@@ -65,16 +65,16 @@
                                     Keyboard="Text"
                         
                                 />
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
 
-                   
-                    <StackLayout>
-                        <Frame Padding="5" CornerRadius="5">
-                            <StackLayout>
-                              
-                                <input:AdvancedEntry 
+
+                        <StackLayout>
+                            <Frame Padding="5" CornerRadius="5">
+                                <StackLayout>
+
+                                    <input:AdvancedEntry 
                                     Placeholder="Address"
                                     CornerRadius="5"
                                     Margin="5"
@@ -86,8 +86,8 @@
                                     
                         
                                 />
-                                
-                                <input:AdvancedEntry 
+
+                                    <input:AdvancedEntry 
                                     Placeholder="Phone Number"
                                     CornerRadius="5"
                                     Margin="5"
@@ -97,8 +97,8 @@
                                     Keyboard="Numeric"
                         
                                 />
-                     
-                                <input:AdvancedEntry 
+
+                                    <input:AdvancedEntry 
                                     Placeholder="Email"
                                     CornerRadius="5"
                                     Margin="5"
@@ -107,15 +107,15 @@
                                     IsRequired="True"
                                     Keyboard="Email"
                         
-                                />  
-                                <Button Margin="6" Text="UPDATE" HeightRequest="35" CornerRadius="6" Command="{Binding OnUpdateCommand}"/>
-                            </StackLayout>
-                        </Frame>
+                                />
+                                    <Button Margin="6" Text="UPDATE" HeightRequest="35" CornerRadius="6" Command="{Binding OnUpdateCommand}"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
                 </input:FormView>
             </StackLayout>
-            
+
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

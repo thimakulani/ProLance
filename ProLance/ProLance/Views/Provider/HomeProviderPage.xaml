@@ -17,8 +17,15 @@
                 </LinearGradientBrush>
             </StackLayout.Background>
             <StackLayout>
-                <StackLayout Orientation="Vertical">
-                    <Label Text="SERVICES" FontAttributes="Bold" Margin="5" TextColor="WhiteSmoke" FontSize="20" HorizontalOptions="Start"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="SERVICES" FontAttributes="Bold" Margin="25, 5, 0, 25" 
+                           TextColor="WhiteSmoke" FontSize="20" HorizontalOptions="Start"/>
+
+                    <ImageButton HorizontalOptions="EndAndExpand" 
+                                 BackgroundColor="Transparent"
+                                 x:Name="ImgLogout"
+                                 Clicked="ImgLogout_Clicked"
+                                 WidthRequest="25" HeightRequest="25" Source="delete_icon"/>
                 </StackLayout>
                 <CarouselView EmptyView="No Data" 
                           HeightRequest="250" 
@@ -36,6 +43,46 @@
                                            
                                            />
                     </CarouselView.ItemsLayout>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame HeightRequest="300" WidthRequest="250" 
+                                    Padding="0"
+                                    HasShadow="True" Margin="3" CornerRadius="7"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Frame.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="CadetBlue" Offset="0.1"/>
+                                            <GradientStop Color="CadetBlue" Offset="1.0"/>
+
+                                        </LinearGradientBrush>
+                                    </Frame.Background>
+                                    <Grid>
+                                        <Grid>
+                                            <StackLayout>
+                                                <ImageButton 
+                                                    HeightRequest="300" 
+                                                    Opacity="0.6"
+                                                    x:Name="ImgService"
+                                                    CommandParameter="{Binding Id}"
+                                                    Clicked="ImgService_Clicked"
+                                                    BackgroundColor="Transparent"
+                                                    Source="{Binding ImgUrl}"
+                                                    Aspect="AspectFill"/>
+                                            </StackLayout>
+                                            <Label Text="{Binding Name}" 
+                                                FontSize="12"
+                                                TextColor="White"
+                                                FontAttributes="Bold" Margin="15,5"
+                                                VerticalOptions="EndAndExpand"/>
+
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+
                 </CarouselView>
             </StackLayout>
             <StackLayout Grid.Row="1">
@@ -48,7 +95,7 @@
                                 x:Name="SelectedServices" 
                                 BackgroundColor="Transparent"
                                 SelectionMode="Single" 
-                                SelectionChanged="ServicesCollection_SelectionChanged"
+                                SelectionChanged="SelectedServices_SelectionChanged"
                                 >
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"/>
@@ -96,7 +143,7 @@
 
                 </CollectionView>
             </StackLayout>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

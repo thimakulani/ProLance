@@ -20,7 +20,7 @@ namespace ProLance.Views.Client
         {
             InitializeComponent();
             GetServicesCategories();
-			GetRequestedServices();
+            GetRequestedServices();
         }
         private readonly ObservableCollection<Requests> requests = new ObservableCollection<Requests>();
         public ObservableCollection<Requests> Requests { get { return requests; } }
@@ -68,46 +68,46 @@ namespace ProLance.Views.Client
 
         }
         private readonly ObservableCollection<ServiceCategories> serviceCategories = new ObservableCollection<ServiceCategories>();
-		public ObservableCollection<ServiceCategories> ServiceCategories { get { return serviceCategories; } }
-		private void GetServicesCategories()
+        public ObservableCollection<ServiceCategories> ServiceCategories { get { return serviceCategories; } }
+        private void GetServicesCategories()
         {
-			ClientServiceCategory.BindingContext = this;
-			ClientServiceCategory.ItemsSource = ServiceCategories;
-			CrossCloudFirestore
-				.Current
-				.Instance
-				.Collection("CATEGORIES")
-				.AddSnapshotListener((value, error) =>
-				{
-					if (!value.IsEmpty)
-					{
-						foreach (var item in value.DocumentChanges)
-						{
-							var category = new ServiceCategories();
-							switch (item.Type)
-							{
-								case DocumentChangeType.Added:
-									category = item.Document.ToObject<ServiceCategories>();
-									ServiceCategories.Add(category);
-									break;
-								case DocumentChangeType.Modified:
-									break;
-								case DocumentChangeType.Removed:
-									break;
-							}
-						}
-					}
-				});
-		}
+            ClientServiceCategory.BindingContext = this;
+            ClientServiceCategory.ItemsSource = ServiceCategories;
+            CrossCloudFirestore
+                .Current
+                .Instance
+                .Collection("CATEGORIES")
+                .AddSnapshotListener((value, error) =>
+                {
+                    if (!value.IsEmpty)
+                    {
+                        foreach (var item in value.DocumentChanges)
+                        {
+                            var category = new ServiceCategories();
+                            switch (item.Type)
+                            {
+                                case DocumentChangeType.Added:
+                                    category = item.Document.ToObject<ServiceCategories>();
+                                    ServiceCategories.Add(category);
+                                    break;
+                                case DocumentChangeType.Modified:
+                                    break;
+                                case DocumentChangeType.Removed:
+                                    break;
+                            }
+                        }
+                    }
+                });
+        }
 
         private void ImgService_Clicked(object sender, EventArgs e)
         {
-			var img = (ImageButton)sender;
-			var id  = img.CommandParameter.ToString();
-			Navigation.PushModalAsync(new ServiceDetailsPage(id));
-			Console.WriteLine(id);
+            var img = (ImageButton)sender;
+            var id = img.CommandParameter.ToString();
+            Navigation.PushModalAsync(new ServiceDetailsPage(id));
+            Console.WriteLine(id);
         }
 
-       
+
     }
 }
