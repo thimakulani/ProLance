@@ -99,10 +99,10 @@
       <Version>2.3.0.759</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.GooglePlayServices.Basement">
-      <Version>118.0.0</Version>
+      <Version>117.6.0.6</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.GooglePlayServices.Maps">
-      <Version>118.0.2</Version>
+      <Version>117.0.1.5</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

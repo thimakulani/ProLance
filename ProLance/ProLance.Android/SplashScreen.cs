@@ -21,6 +21,11 @@ namespace ProLance.Droid
         {
             base.OnCreate(savedInstanceState);
            
+          
+        }
+        protected override void OnResume()
+        {
+            base.OnResume();
             // Set our view from the "main" layout resource
             Task startWork = new Task(() =>
             {

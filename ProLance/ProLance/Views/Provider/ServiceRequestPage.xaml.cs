@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Rg.Plugins.Popup.Services;
 
 namespace ProLance.Views.Provider
 {
@@ -29,6 +30,7 @@ namespace ProLance.Views.Provider
 
             RequestsItems.BindingContext = this;
             RequestsItems.ItemsSource = Requests;
+            
             FetchData();
         }
 
@@ -41,6 +43,7 @@ namespace ProLance.Views.Provider
                 .WhereEqualsTo("Uid", CrossFirebaseAuth.Current.Instance.CurrentUser.Uid)
                 .GetAsync();
 
+
             if (!query.IsEmpty)
             {
                 List<Offers> offers = query.ToObjects<Offers>().ToList<Offers>();
@@ -52,9 +55,9 @@ namespace ProLance.Views.Provider
                     .Current
                     .Instance
                     .Collection("REQUESTS")
-                    .WhereArrayContainsAny("S_ID", arr)
+                    .WhereIn("S_ID", arr)
                     //.WhereEqualsTo("Status", "1")
-                    .AddSnapshotListener((data, error) =>
+                    .AddSnapshotListener(async (data, error) =>
                     {
                         if (!data.IsEmpty)
                         {
@@ -65,6 +68,8 @@ namespace ProLance.Views.Provider
                                 {
                                     case DocumentChangeType.Added:
                                         _request = item.Document.ToObject<Requests>();
+                                        var name = await GetServiceNameAsync(_request.SiD);
+                                        _request.Name = name;
                                         requests.Add(_request);
                                         break;
                                     case DocumentChangeType.Modified:
@@ -78,6 +83,33 @@ namespace ProLance.Views.Provider
                     });
             }
 
+        }
+        private async Task<string> GetServiceNameAsync(string id)
+        {
+            var query = await CrossCloudFirestore
+                .Current
+                .Instance
+                .Collection("SERVICES")
+                .Document(id)
+                .GetAsync();
+            return query.ToObject<Services>().Name;
+
+        }
+
+        private void BtnInterest_Clicked(object sender, EventArgs e)
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add("Price", "");
+            data.Add("UID", CrossFirebaseAuth.Current.Instance.CurrentUser.Uid);
+        }
+
+
+        private void BtnView_Clicked(object sender, EventArgs e)
+        {
+            var img = (Button)sender;
+            var id = img.CommandParameter.ToString();
+            Navigation.PushModalAsync(new ServiceDetailPage(id));
+            
         }
     }
 }

@@ -106,10 +106,10 @@
                                         <Label Text="txt"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical" Grid.Column="1"  Margin="5">
-                                        <Label Text="txt"/>
-                                        <Label Text="txt"/>
-                                        <Label Text="txt"/>
-                                        <Label Text="txt"/>
+                                        <Label Text="{Binding Name}"/>
+                                        <Label Text="{Binding Dates}"/>
+                                        <Label Text="{Binding Description}"/>
+                                        <Label Text="{Binding Status}"/>
                                     </StackLayout>
                                 </Grid>
                             </Frame>

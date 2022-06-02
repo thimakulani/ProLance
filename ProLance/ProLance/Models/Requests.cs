@@ -14,6 +14,9 @@ namespace ProLance.Models
         public string SiD { get; set; }
         public string Uid { get; set; }
         public string Dates { get; set; }
-        public string Location { get; set; }
+        public string Address { get; set; }
+        public string Description { get; set; }
+        public string Status { get; set; }
+        
     }
 }

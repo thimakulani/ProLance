@@ -26,6 +26,8 @@ namespace ProLance.Views.Client
         public ObservableCollection<Requests> Requests { get { return requests; } }
         private void GetRequestedServices()
         {
+            ServiceRequested.BindingContext = this;
+            ServiceRequested.ItemsSource = Requests;
             CrossCloudFirestore
                    .Current
                    .Instance
@@ -43,7 +45,8 @@ namespace ProLance.Views.Client
                                {
                                    case DocumentChangeType.Added:
                                        _request = item.Document.ToObject<Requests>();
-                                       _request.Name = await GetServiceNameAsync(_request.SiD);
+                                       var name =  await GetServiceNameAsync(_request.SiD);
+                                       _request.Name = name;
                                        requests.Add(_request);
                                        break;
                                    case DocumentChangeType.Modified:

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Rg.Plugins.Popup.Services;
 
 namespace ProLance.Views.Client
 {
@@ -44,6 +45,8 @@ namespace ProLance.Views.Client
                 .Instance
                 .Collection("REQUESTS")
                 .AddAsync(data);
+            PopupNavigation.Instance.PopAsync();
+
         }
 
         private void BtnSubmit_Clicked(object sender, EventArgs e)

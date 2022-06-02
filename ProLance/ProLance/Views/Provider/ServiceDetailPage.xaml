@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  
+    xmlns:pages="http://rotorgames.com" 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProLance.Views.Provider.ServiceDetailPage">
+    <pages:PopupPage.Animation>
+        <pages:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8" 
+        />
+    </pages:PopupPage.Animation>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center" Margin="20">
+            <ImageButton 
+                WidthRequest="40" 
+                HeightRequest="40" 
+                CornerRadius="80" 
+                x:Name="ImgClose"
+                Source="delete_icon"
+                Clicked="ImgClose_Clicked"
+                HorizontalOptions="End"
+            />
+                <Frame>
+                    <StackLayout>
+                        <StackLayout>
+                            <Label Text="Name" FontSize="12" />
+                            <Label Text="{Binding Description}" Margin="10,0,0,0" FontSize="26" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Name" FontSize="12" />
+                            <Label Text="zsrxtcytyubiuop" Margin="10,0,0,0" FontSize="26" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Name" FontSize="12" />
+                            <Label Text="zsrxtcytyubiuop" Margin="10,0,0,0" FontSize="26" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Name" FontSize="12" />
+                            <Label Text="zsrxtcytyubiuop" Margin="10,0,0,0" FontSize="26" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Name" FontSize="12" />
+                            <Label Text="zsrxtcytyubiuop" Margin="10,0,0,0" FontSize="26" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="INTERESTED" />
+                            <Button Text="IGNORE" BackgroundColor="Red"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</pages:PopupPage>

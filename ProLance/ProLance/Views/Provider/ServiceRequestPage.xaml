@@ -32,16 +32,23 @@
                 </StackLayout>
                 <Frame Margin="10, 0, 10, 10" Grid.Row="3" CornerRadius="6" Padding="3" BackgroundColor="Transparent">
 
-                    <CollectionView SelectionMode="Single" x:Name="RequestsItems" EmptyView="No items to display">
+                    <CollectionView SelectionMode="None" x:Name="RequestsItems" 
+                                    EmptyView="No items to display"
+                                    
+                                    >
                         <CollectionView.ItemsLayout>
                             <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout>
-                                    <Frame Margin="3" CornerRadius="5">
-                                        <StackLayout>
-                                            <Label Text="{Binding Name}" />
+                                    <Frame Margin="3" CornerRadius="5" Padding="5">
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout VerticalOptions="Center">
+                                                <Label Text="{Binding Name}" />
+                                            </StackLayout>
+                                            <Button Text="View"  HeightRequest="35" FontSize="16" HorizontalOptions="EndAndExpand" CommandParameter="{Binding Id}" x:Name="BtnView" Clicked="BtnView_Clicked" />
+                                            
                                         </StackLayout>
                                     </Frame>
                                 </StackLayout>
