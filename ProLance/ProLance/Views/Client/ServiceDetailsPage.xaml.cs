@@ -55,6 +55,7 @@ namespace ProLance.Views.Client
                             {
                                 case DocumentChangeType.Added:
                                     var data = item.Document.ToObject<Services>();
+                                    data.Reference = item.Document.Reference;
                                     items.Add(data);
                                     break;
                                 case DocumentChangeType.Modified:
@@ -70,7 +71,7 @@ namespace ProLance.Views.Client
         private void CategoryServices_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = e.CurrentSelection.FirstOrDefault() as Services;
-            PopupNavigation.Instance.PushAsync(new RequestServiceDlg(item.Id));
+            PopupNavigation.Instance.PushAsync(new RequestServiceDlg(item.Reference));
             
         }
     }

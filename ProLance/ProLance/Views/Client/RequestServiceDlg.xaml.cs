@@ -16,36 +16,37 @@ namespace ProLance.Views.Client
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RequestServiceDlg
     {
-        private readonly string id;
+        private readonly IDocumentReference id;
         public string Address { get; set; }
         public string Description { get; set; }
-        public RequestServiceDlg(string id)
+        public RequestServiceDlg(IDocumentReference id)
         {
             InitializeComponent();
             BindingContext = this;
             this.id = id;
-            
-        }
-        private void Request()
-        {
-          
-            Dictionary<string, object> data = new Dictionary<string, object>()
-            {
-                {"S_ID",id },
-                {"Uid",CrossFirebaseAuth.Current.Instance.CurrentUser.Uid },
-                {"Dates",PickerDate.Date.ToString("dd/MMM/yyyy") },
-                {"Status", "0"},
-                {"Description", Description},
-                {"Address", Address },
-            };
-            
 
-            CrossCloudFirestore
-                .Current
-                .Instance
-                .Collection("REQUESTS")
-                .AddAsync(data);
-            PopupNavigation.Instance.PopAsync();
+        }
+        private async void Request()
+        {
+            Requests requests = new Requests()
+            {
+                Address = Address,
+                Dates = PickerDate.Date.ToString("dd/MMM/yyyy"),
+                Description = Description,
+                SiD = id.Id,
+                IDocumentReference = id,
+                Name = null,
+                Status = 0.ToString(),
+                Uid = CrossFirebaseAuth.Current.Instance.CurrentUser.Uid,
+            };
+
+
+            await CrossCloudFirestore
+                    .Current
+                    .Instance
+                    .Collection("REQUESTS")
+                    .AddAsync(requests);
+            await PopupNavigation.Instance.PopAsync();
 
         }
 
@@ -56,7 +57,7 @@ namespace ProLance.Views.Client
 
         private void PickerDate_DateSelected(object sender, DateChangedEventArgs e)
         {
-            if(e.NewDate <= DateTime.Now)
+            if (e.NewDate <= DateTime.Now)
             {
                 DisplayAlert("Error", "Cannot select previous dates", "Got it");
             }

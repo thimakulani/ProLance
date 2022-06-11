@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Plugin.CloudFirestore;
 
 namespace ProLance.Droid
 {
@@ -12,6 +13,15 @@ namespace ProLance.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            if(savedInstanceState == null)
+            {
+                CrossCloudFirestore
+                    .Current.Instance.FirestoreSettings = new FirestoreSettings()
+                    {
+                        IsPersistenceEnabled = false,
+                        
+                    };
+            }
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

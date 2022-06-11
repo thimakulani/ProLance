@@ -104,12 +104,12 @@ namespace ProLance.Views.Provider
         }
 
 
-        private void BtnView_Clicked(object sender, EventArgs e)
+        private async void BtnView_Clicked(object sender, EventArgs e)
         {
             var img = (Button)sender;
             var id = img.CommandParameter.ToString();
-            Navigation.PushModalAsync(new ServiceDetailPage(id));
             
+            await PopupNavigation.Instance.PushAsync(new ServiceDetailPage(id));
         }
     }
 }

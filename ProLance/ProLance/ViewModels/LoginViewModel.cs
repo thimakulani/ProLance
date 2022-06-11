@@ -11,6 +11,8 @@ using ProLance.AppShells;
 
 namespace ProLance.ViewModels
 {
+
+
     public class LoginViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -23,6 +25,7 @@ namespace ProLance.ViewModels
 
         public LoginViewModel()
         {
+            
             auth = CrossFirebaseAuth
                 .Current
                 .Instance;

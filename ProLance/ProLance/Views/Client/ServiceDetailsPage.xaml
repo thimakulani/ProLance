@@ -9,14 +9,14 @@
     <ContentPage.Content>
         
         <StackLayout>
-            <ImageButton Source="arrow_back_left_navigation" HorizontalOptions="Start" HeightRequest="35" WidthRequest="35" BackgroundColor="Transparent" />
+           
             <StackLayout>
                 <Label FontAttributes="Bold" Margin="5" 
                        TextColor="WhiteSmoke" FontSize="20"
                        x:Name="TxtHeading"
                        />
-                <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" Visual="Material">
-                    <Image HeightRequest="25" WidthRequest="25" HorizontalOptions="End"  IsVisible="false"
+                <StackLayout  Orientation="Horizontal" VerticalOptions="StartAndExpand" Visual="Material">
+                    <Image HeightRequest="25"  WidthRequest="25" HorizontalOptions="End"  IsVisible="false"
                            Source="location_map_icon" VerticalOptions="Center"/>
                 </StackLayout>
                 <CollectionView EmptyView="No Items" 

@@ -32,11 +32,11 @@
                     <StackLayout>
                         <StackLayout>
                             <Label Text="Name" FontSize="12" />
-                            <Label Text="{Binding Description}" Margin="10,0,0,0" FontSize="26" />
+                        <Label Text="{Binding Name}" Margin="10,0,0,0" FontSize="26" />
                         </StackLayout>
                         <StackLayout>
-                            <Label Text="Name" FontSize="12" />
-                            <Label Text="zsrxtcytyubiuop" Margin="10,0,0,0" FontSize="26" />
+                            <Label Text="Description" FontSize="12" />
+                        <Label Text="{Binding Requests.Description}" Margin="10,0,0,0" FontSize="26" />
                         </StackLayout>
                         <StackLayout>
                             <Label Text="Name" FontSize="12" />
@@ -51,8 +51,8 @@
                             <Label Text="zsrxtcytyubiuop" Margin="10,0,0,0" FontSize="26" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Button Text="INTERESTED" />
-                            <Button Text="IGNORE" BackgroundColor="Red"/>
+                        <Button Text="INTERESTED" Command="{Binding BtnAccept}" HeightRequest="30" FontSize="16"/>
+                            <Button Text="IGNORE" BackgroundColor="Red" Command="{Binding BtnIgnore}" HeightRequest="30" FontSize="16"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>

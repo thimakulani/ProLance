@@ -82,13 +82,12 @@
                             </StackLayout>
                         </DataTemplate>
                     </CarouselView.ItemTemplate>
-
                 </CarouselView>
             </StackLayout>
             <StackLayout Grid.Row="1">
                 <Label Text="SERVICES YOU OFFER" FontAttributes="Bold" Margin="5" TextColor="WhiteSmoke" FontSize="20"/>
                 <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
-                    <Image HeightRequest="25" WidthRequest="25" HorizontalOptions="End" Source="location_map_icon" VerticalOptions="Center"/>
+                    <Image HeightRequest="25" IsVisible="false" WidthRequest="25" HorizontalOptions="End" Source="location_map_icon" VerticalOptions="Center"/>
                     <Label VerticalOptions="Center" FontAttributes="Bold" Margin="5" TextColor="WhiteSmoke" FontSize="16" HorizontalOptions="End" x:Name="TxtLocation"/>
                 </StackLayout>
                 <CollectionView EmptyView="No Items" 

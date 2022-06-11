@@ -1,4 +1,5 @@
-﻿using Plugin.CloudFirestore.Attributes;
+﻿using Plugin.CloudFirestore;
+using Plugin.CloudFirestore.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace ProLance.Models
     {
         [Id]
         public string Id { get; set; }
+        [Ignored]
         public string Name { get; set; }
         [MapTo("S_ID")]
         public string SiD { get; set; }
@@ -17,6 +19,8 @@ namespace ProLance.Models
         public string Address { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
-        
+        [Ignored]
+        public int Interests { get; set; }
+        public IDocumentReference IDocumentReference { get; set; }
     }
 }

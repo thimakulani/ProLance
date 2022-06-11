@@ -47,6 +47,8 @@ namespace ProLance.Views.Client
                                        _request = item.Document.ToObject<Requests>();
                                        var name =  await GetServiceNameAsync(_request.SiD);
                                        _request.Name = name;
+
+                                       
                                        requests.Add(_request);
                                        break;
                                    case DocumentChangeType.Modified:
@@ -58,6 +60,11 @@ namespace ProLance.Views.Client
                            }
                        }
                    });
+        }
+        private List<Interests> GetInterests()
+        {
+
+            return null;
         }
         private async Task<string> GetServiceNameAsync(string id)
         {
@@ -107,7 +114,7 @@ namespace ProLance.Views.Client
         {
             var img = (ImageButton)sender;
             var id = img.CommandParameter.ToString();
-            Navigation.PushModalAsync(new ServiceDetailsPage(id));
+            Navigation.PushAsync(new ServiceDetailsPage(id));
             Console.WriteLine(id);
         }
 

@@ -1,4 +1,5 @@
-﻿using Plugin.CloudFirestore.Attributes;
+﻿using Plugin.CloudFirestore;
+using Plugin.CloudFirestore.Attributes;
 namespace ProLance.Models
 {
     public class Services
@@ -7,6 +8,8 @@ namespace ProLance.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Uid { get; set; }
-        public string Category { get; set; }    
+        public string Category { get; set; }
+        [Ignored]
+        public IDocumentReference Reference { get; set; }
     }
 }

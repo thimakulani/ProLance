@@ -47,7 +47,9 @@
                                             <StackLayout VerticalOptions="Center">
                                                 <Label Text="{Binding Name}" />
                                             </StackLayout>
-                                            <Button Text="View"  HeightRequest="35" FontSize="16" HorizontalOptions="EndAndExpand" CommandParameter="{Binding Id}" x:Name="BtnView" Clicked="BtnView_Clicked" />
+                                            <Button Text="View"  HeightRequest="35" FontSize="16" 
+                                                    HorizontalOptions="EndAndExpand" 
+                                                    CommandParameter="{Binding Id}" x:Name="BtnView" Clicked="BtnView_Clicked" />
                                             
                                         </StackLayout>
                                     </Frame>

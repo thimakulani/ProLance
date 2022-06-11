@@ -77,6 +77,36 @@
                             </StackLayout>
                         </DataTemplate>
                     </CarouselView.ItemTemplate>
+                    <CarouselView.EmptyViewTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Frame HeightRequest="300" WidthRequest="250" 
+                                    Padding="0"
+                                    HasShadow="True" Margin="3" CornerRadius="7"
+                                    HorizontalOptions="CenterAndExpand">
+                                    <Frame.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="CadetBlue" Offset="0.1"/>
+                                            <GradientStop Color="CadetBlue" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Frame.Background>
+                                    <Grid>
+                                        <Grid>
+                                            <StackLayout>
+                                                <Label Text="NO CATEGORY ADDED." 
+                                                    FontSize="12"
+                                                    TextColor="White"
+                                                    FontAttributes="Bold" Margin="15,5"
+                                                    VerticalOptions="CenterAndExpand"/>
+                                            </StackLayout>
+
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CarouselView.EmptyViewTemplate>
+                    
                 </CarouselView>
             </StackLayout>
 
@@ -100,16 +130,18 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Orientation="Vertical" Grid.Column="0" Margin="5">
-                                        <Label Text="txt"/>
-                                        <Label Text="txt"/>
-                                        <Label Text="txt"/>
-                                        <Label Text="txt"/>
+                                        <Label Text="SERVICE"/>
+                                        <Label Text="DATE"/>
+                                        <Label Text="DESCRIPTION"/>
+                                        <Label Text="STATUS"/>
+                                        <Label Text="INTERESTED"/>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical" Grid.Column="1"  Margin="5">
                                         <Label Text="{Binding Name}"/>
                                         <Label Text="{Binding Dates}"/>
                                         <Label Text="{Binding Description}"/>
                                         <Label Text="{Binding Status}"/>
+                                        <Label Text="{Binding Interests.Count}"/>
                                     </StackLayout>
                                 </Grid>
                             </Frame>

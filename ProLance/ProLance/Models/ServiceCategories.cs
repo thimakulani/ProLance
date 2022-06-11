@@ -13,6 +13,7 @@ namespace ProLance.Models
         public string Name { get; set; }
         [MapTo("description")]
         public string Description { get; set; }
+        [MapTo("download_url")]
         public string ImgUrl { get; set; }
     }
 }

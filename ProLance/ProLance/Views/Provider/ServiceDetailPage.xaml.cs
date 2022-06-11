@@ -1,6 +1,8 @@
 ﻿using Plugin.CloudFirestore;
 using ProLance.Models;
+using ProLance.ViewModels;
 using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,30 +19,26 @@ namespace ProLance.Views.Provider
     {
         
         public Requests Item;
-        private string id;
-
         public ServiceDetailPage(string id)
         {
             InitializeComponent();
+            ServiceDetailViewModel model = new ServiceDetailViewModel(id);
 
-            this.id = id;
-            Item = new Requests();
-            Item.Description = id;
-            BindingContext = Item;
-            CrossCloudFirestore
-                .Current
-                .Instance
-                .Collection("")
-                .Document(this.id)
-                .AddSnapshotListener(async (values, error) =>
-                {
-                    if(values != null)
-                    {
-                        Item = values.ToObject<Requests>();
-                        var name = await GetServiceNameAsync(Item.Id);
-                        Item.Name = name;
-                    }
-                });
+            BindingContext = model;
+            //CrossCloudFirestore
+            //    .Current
+            //    .Instance
+            //    .Collection("REQUESTS")
+            //    .Document(this.id)
+            //    .AddSnapshotListener(async (values, error) =>
+            //    {
+            //        if(values.Exists)
+            //        {
+            //            Item = values.ToObject<Requests>();
+            //            var name = await GetServiceNameAsync(Item.SiD);
+            //            Item.Name = name;
+            //        }
+            //    });
 
             
 
@@ -58,9 +56,9 @@ namespace ProLance.Views.Provider
         }
 
 
-        private void ImgClose_Clicked(object sender, EventArgs e)
+        private async void ImgClose_Clicked(object sender, EventArgs e)
         {
-            
+            await PopupNavigation.Instance.PopAsync();
         }
     }
 }
