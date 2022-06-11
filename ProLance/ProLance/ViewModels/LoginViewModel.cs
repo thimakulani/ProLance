@@ -47,7 +47,7 @@ namespace ProLance.ViewModels
             try
             {
                 var results = await auth.SignInWithEmailAndPasswordAsync(email, password);
-                if (results.User.Uid != null)
+                if (results.User != null)
                 {
                     CrossCloudFirestore
                         .Current

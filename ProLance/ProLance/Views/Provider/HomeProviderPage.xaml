@@ -94,6 +94,8 @@
                                 x:Name="SelectedServices" 
                                 BackgroundColor="Transparent"
                                 SelectionMode="Single" 
+                                ItemSizingStrategy="MeasureAllItems"
+                                
                                 SelectionChanged="SelectedServices_SelectionChanged"
                                 >
                     <CollectionView.ItemsLayout>

@@ -74,7 +74,7 @@ namespace ProLance.Views.Client
                 .Collection("SERVICES")
                 .Document(id)
                 .GetAsync();
-            return query.ToObject<Services>().Name;
+            return query.ToObject<Services>()?.Name;
 
         }
         private readonly ObservableCollection<ServiceCategories> serviceCategories = new ObservableCollection<ServiceCategories>();

@@ -124,6 +124,10 @@ namespace ProLance.Views.Provider
                                     break;
                                 case DocumentChangeType.Removed:
                                     service.RemoveAt(item.OldIndex);
+                                    if (service.Count <=0)
+                                    {
+                                        
+                                    }
                                     break;
                             }
                         }
